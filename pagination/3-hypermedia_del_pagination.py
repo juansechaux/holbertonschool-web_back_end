@@ -48,20 +48,16 @@ class Server:
         assert type(page_size) is int and page_size > 0
 
         dataset_size = len(self.indexed_dataset())
-
         # Calculate start and end index using index_range function
         start_index = index if index is not None else 0
         end_index = start_index + page_size
-
         # Retrieve the dataset page based on start and end index
         data_page = []
-
         for i in range(start_index, min(end_index, dataset_size)):
             data_page.append(self.indexed_dataset().get(i, None))
 
         # Determine next index for the next page
         next_index = min(end_index, dataset_size)
-
         # Populate the dictionary with hypermedia information
         hyper_info = {
             "index": start_index,
@@ -69,7 +65,6 @@ class Server:
             "page_size": len(data_page),
             "data": [item for item in data_page if item is not None]
         }
-
         return hyper_info
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
