@@ -57,18 +57,11 @@ class Server:
             dict_of_data["page_size"] = 0
         else:
             dict_of_data["page_size"] = indexes[1] - indexes[0]
-        dict_of_data["page"] = indexes[0] + 1
+        dict_of_data["page"] = page
         dict_of_data["data"] = self.get_page(page, page_size)
-        total_pages = len(self.dataset())
-        if total_pages <= (indexes[0] + 2):
-            dict_of_data["next_page"] = None
-        elif total_pages != (indexes[0] + 2):
-            dict_of_data["next_page"] = dict_of_data["page"] + 1
-        if indexes[0] == 0:
-            dict_of_data["prev_page"] = None
-        elif indexes[0] != 0:
-            dict_of_data["prev_page"] = dict_of_data["page"] - 1
-        dict_of_data["total_pages"] = total_pages
+        total_pages = math.ceil(len(self.dataset()) / page_size)
+        dict_of_data["next_page"] = page + 1 if page < total_pages else None
+        dict_of_data["prev_page"] = page - 1 if page > 1 else None
         return dict_of_data
 
 
