@@ -53,7 +53,10 @@ class Server:
         '''
         dict_of_data = {}
         indexes = index_range(page, page_size)
-        dict_of_data["page_size"] = indexes[1] - indexes[0]
+        if (indexes[0] + 1) > len(self.dataset()):
+            dict_of_data["page_size"] = 0
+        else:
+            dict_of_data["page_size"] = indexes[1] - indexes[0]
         dict_of_data["page"] = indexes[0] + 1
         dict_of_data["data"] = self.get_page(page, page_size)
         total_pages = len(self.dataset())
