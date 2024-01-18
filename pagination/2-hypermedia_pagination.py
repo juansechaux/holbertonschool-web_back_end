@@ -64,7 +64,7 @@ class Server:
         if indexes[0] == 0:
             dict_of_data["prev_page"] = None
         elif indexes[0] != 0:
-            dict_of_data["prev_page"] = (indexes[0] - 1)
+            dict_of_data["prev_page"] = (indexes[0])
         dict_of_data["total_pages"] = total_pages
         return dict_of_data
 
