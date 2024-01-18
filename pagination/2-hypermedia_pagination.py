@@ -61,7 +61,7 @@ class Server:
         dict_of_data["data"] = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
         dict_of_data["next_page"] = page + 1 if page < total_pages else None
-        dict_of_data["prev_page"] = page - 1 if page > 1 else None
+        dict_of_data["prev_page"] = page - 1 if page >= 1 else None
         return dict_of_data
 
 
