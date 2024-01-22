@@ -4,11 +4,11 @@ This repository provides a brief guide on defining classes, adding methods, inco
 
 ## Table of Contents
 
-1. [Defining a Class](#defining-a-class)
-2. [Adding Methods to a Class](#adding-methods-to-a-class)
-3. [Adding a Static Method to a Class](#adding-a-static-method-to-a-class)
-4. [Extending a Class](#extending-a-class)
-5. [Metaprogramming and Symbols](#metaprogramming-and-symbols)
+1. [Defining a Class](#1-defining-a-class)
+2. [Adding Methods to a Class](#2-adding-methods-to-a-class)
+3. [Adding a Static Method to a Class](#3-adding-a-static-method-to-a-class)
+4. [Extending a Class](#4-extending-a-class)
+5. [Metaprogramming and Symbols](#5-metaprogramming-and-symbols)
 
 ## 1. Defining a Class
 
