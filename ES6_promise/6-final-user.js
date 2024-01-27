@@ -1,10 +1,27 @@
 import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
-export default function handleProfileSignup(firstName, lastName, fileName) {
-  return Promise.allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)])
-    .then((values) => values)
-    .catch(() => {
-      console.log('Signup system offline');
-    });
+async function handleProfileSignup(firstName, lastName, fileName) {
+  const promise1 = {};
+  const promise2 = {};
+
+  try {
+    promise1.value = await signUpUser(firstName, lastName);
+    promise1.status = 'fulfilled';
+  } catch (err) {
+    promise1.value = err.toString();
+    promise1.status = 'rejected';
+  }
+
+  try {
+    promise2.value = await uploadPhoto(fileName);
+    promise2.status = 'fulfilled';
+  } catch (err) {
+    promise2.value = err.toString();
+    promise2.status = 'rejected';
+  }
+
+  return [promise1, promise2];
 }
+
+export default handleProfileSignup;
